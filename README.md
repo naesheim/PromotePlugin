@@ -1,0 +1,43 @@
+# ArtifactsPromoter
+
+This gradle plugin collects artifacts from one repo and promote them to a new repo as a bundled up zip.
+
+## How
+
+
+
+1. Add the gradle plugin to your build.gradle:
+```
+    plugins {
+        id "net.praqma.promote" version "1.0.0"
+    }
+```
+
+2. Add upload folder to build.gradle
+```
+buildproperties.publishing {
+    zip {
+        from ('build/resolvedDep/')
+    }
+}
+```
+3. Update promote.properties
+```
+    productName=ReleasePackage
+    version=1.0.1  
+    group=net.praqma
+    resolveRepo=libs-release-local
+    destinationRepo=promote-release-local
+    artifacts=artifacts.txt
+```
+4. Add your artifacts to a file divided by new line, containing group:name:version
+```
+    com.gradle:plugin:1.2.3
+    net.default.customLib:1.0.0
+```
+
+5. Promote your artifacts with
+```
+    OSX or LINUX: ./gradlew publish
+    WIN : gradlew.bat publish
+```
