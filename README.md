@@ -35,8 +35,14 @@ buildproperties.publishing {
     com.gradle:plugin:1.2.3
     net.default.customLib:1.0.0
 ```
+5. Update gradle.properties in your ~/.gradle folder 
+```
+repositoryManagerUsername=username
+repositoryManagerPassword=password
+repositoryManagerUrl=http://127.0.0.1:8081/repository
+```
 
-5. Promote your artifacts with
+6. Promote your artifacts with
 ```
     OSX or LINUX: ./gradlew publish
     WIN : gradlew.bat publish
